@@ -148,5 +148,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minLifeTime: 2
   _maxLifeTime: 5
-  _hasCollider: 0
+  _hasTouched: 0
   _meshRenderer: {fileID: 3643586466422929849}

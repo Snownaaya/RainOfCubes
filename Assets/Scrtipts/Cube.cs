@@ -5,24 +5,28 @@ public class Cube : MonoBehaviour
 {
     [SerializeField] private int _minLifeTime = 2;
     [SerializeField] private int _maxLifeTime = 5;
-    [SerializeField] private bool _hasCollider;
 
     [SerializeField] private MeshRenderer _meshRenderer;
 
+    private Color _initialColor;
     private Coroutine _coroutine;
     private PoolCubes _pool;
 
+    private bool _hasTouched;
+
+    private void Awake() => _initialColor = _meshRenderer.material.color;
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out Platform _) && _hasCollider == false)
+        if (collision.gameObject.TryGetComponent(out Platform _) && _hasTouched == false)
         {
-            _hasCollider = true;
-            RandomColor();
+            _hasTouched = true;
+            GetRandomColor();
             StartLifeCycle();
         }
     }
 
-    public void SetPool(PoolCubes pool) => _pool = pool;
+    public void Init(PoolCubes pool) => _pool = pool;
 
     private void StartLifeCycle()
     {
@@ -30,14 +34,21 @@ public class Cube : MonoBehaviour
         _coroutine = StartCoroutine(DestroyAfterDelay(randomLifeTime));
     }
 
-    private IEnumerator DestroyAfterDelay(float randomLifeTime)
+    private void ResetCube()
     {
-        while (enabled)
-        {
-            yield return new WaitForSeconds(randomLifeTime);
-            _pool.ReturnCube(this);
-        }
+        _hasTouched = false;
+        _meshRenderer.material.color = _initialColor;
+
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
     }
 
-    private void RandomColor() => _meshRenderer.material.color = Random.ColorHSV();
+    private IEnumerator DestroyAfterDelay(float randomLifeTime)
+    {
+        yield return new WaitForSeconds(randomLifeTime);
+        ResetCube();
+        _pool.ReturnCube(this);
+    }
+
+    private void GetRandomColor() => _meshRenderer.material.color = Random.ColorHSV();
 }

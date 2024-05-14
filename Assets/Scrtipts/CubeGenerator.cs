@@ -4,7 +4,7 @@ using UnityEngine;
 public class CubeGenerator : MonoBehaviour
 {
     [SerializeField] private PoolCubes _pool;
-    [SerializeField] private Cube _cube;
+    [SerializeField] private Cube _prefab;
 
     [SerializeField] private float _delay;
     [SerializeField] private int _horizontalBounds;
