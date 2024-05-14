@@ -5,7 +5,6 @@ public class CubeGenerator : MonoBehaviour
 {
     [SerializeField] private PoolCubes _pool;
     [SerializeField] private Cube _cube;
-    [SerializeField] private Transform _spawnPoint;
 
     [SerializeField] private float _delay;
     [SerializeField] private int _horizontalBounds;
