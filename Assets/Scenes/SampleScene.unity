@@ -281,7 +281,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 436373799}
-  - component: {fileID: 436373797}
   - component: {fileID: 436373800}
   m_Layer: 0
   m_Name: PoolCubes
@@ -290,20 +289,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &436373797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 436373796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0410a7a7d8f6390498a9315169066bc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cube: {fileID: -7544978980014353168, guid: 1261622c560932e48a1e622eb8e8581e, type: 3}
-  _cointainer: {fileID: 126006512}
 --- !u!4 &436373799
 Transform:
   m_ObjectHideFlags: 0
@@ -331,8 +316,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d36daa3b385a59a4b9efef0c9ef15ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pool: {fileID: 436373797}
-  _cube: {fileID: -7544978980014353168, guid: 1261622c560932e48a1e622eb8e8581e, type: 3}
+  _prefabs: {fileID: -7544978980014353168, guid: 1261622c560932e48a1e622eb8e8581e, type: 3}
+  _cointainer: {fileID: 126006512}
   _delay: 1
   _horizontalBounds: -10
   _verticalBounds: 10
@@ -454,6 +439,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0.5, y: 89.479, z: -167.543}
+--- !u!1 &684932535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 684932537}
+  - component: {fileID: 684932536}
+  m_Layer: 0
+  m_Name: BombGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &684932536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684932535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1f0a870a4e07e45adcb8f3fd35f9d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabs: {fileID: -4926330458820081535, guid: 60bb7ec428a35444bbeaa121910ba588, type: 3}
+  _cointainer: {fileID: 126006512}
+  _cube: {fileID: -7544978980014353168, guid: 1261622c560932e48a1e622eb8e8581e, type: 3}
+  _cubeGenerator: {fileID: 436373800}
+--- !u!4 &684932537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684932535}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0078865, y: -25.786016, z: -0.7834599}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,3 +921,4 @@ SceneRoots:
   - {fileID: 645354754}
   - {fileID: 436373799}
   - {fileID: 126006512}
+  - {fileID: 684932537}
