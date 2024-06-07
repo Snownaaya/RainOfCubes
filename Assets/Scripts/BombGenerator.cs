@@ -1,15 +1,9 @@
 using UnityEngine;
 
-public class BombGenerator : ObjectPool<Bomb>
+public class BombGenerator : ObjectSpawner<Bomb>
 {
-    [SerializeField] private Cube _cube;
-    [SerializeField] private CubeGenerator _cubeGenerator;
-
-    public void Spawn(Vector3 position)
+    protected override void InitializeObject(Bomb @object)
     {
-        Bomb bomb = GetObject();
-        bomb.gameObject.SetActive(true);
-        bomb.Init(this, _cubeGenerator);
-        bomb.transform.position = position;
+        @object.Init(this);
     }
 }

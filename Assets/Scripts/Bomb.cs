@@ -1,8 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(Renderer))]
+[RequireComponent(typeof(Rigidbody), typeof(Renderer))]
 public class Bomb : MonoBehaviour
 {
     [SerializeField] private float _explosionForce;
@@ -12,7 +11,6 @@ public class Bomb : MonoBehaviour
     private Material _material;
     private Color _originalColor;
     private BombGenerator _generator;
-    private CubeGenerator _cubeGenerator;
 
     private float _fadeTime = 5f;
 
@@ -26,11 +24,8 @@ public class Bomb : MonoBehaviour
     private void Start() =>
         StartCoroutine(FadeOut());
 
-    public void Init(BombGenerator bombGenerator, CubeGenerator cubeGenerator)
-    {
+    public void Init(BombGenerator bombGenerator) =>
         _generator = bombGenerator;
-        _cubeGenerator = cubeGenerator;
-    }
 
     private void Explode()
     {

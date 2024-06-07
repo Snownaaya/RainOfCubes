@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class CubeGenerator : ObjectPool<Cube>
+public class CubeGenerator : ObjectSpawner<Cube>
 {
     [SerializeField] private float _delay;
     [SerializeField] private int _horizontalBounds;
@@ -9,17 +9,12 @@ public class CubeGenerator : ObjectPool<Cube>
 
     [SerializeField] private BombGenerator _generator;
 
-    private Coroutine _coroutine;
-
     private void Start() =>
-        _coroutine = StartCoroutine(GeneratorCubes());
+        StartCoroutine(GeneratorCubes());
 
-    public void Spawn()
+    protected override void InitializeObject(Cube @object)
     {
-        Cube cubes = GetObject();
-        cubes.gameObject.SetActive(true);
-        cubes.Initialized(this, _generator);
-        cubes.transform.position = SetRandomPosition();
+        @object.Initialized(this, _generator);
     }
 
     private IEnumerator GeneratorCubes()
@@ -28,7 +23,7 @@ public class CubeGenerator : ObjectPool<Cube>
 
         while (enabled)
         {
-            Spawn();
+            Spawn(SetRandomPosition());
             yield return waitForSecond;
         }
     }

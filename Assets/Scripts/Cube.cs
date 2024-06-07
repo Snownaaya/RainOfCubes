@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using System;
 
 public class Cube : MonoBehaviour
 {
@@ -12,8 +11,6 @@ public class Cube : MonoBehaviour
     private BombGenerator _bombGenerator;
     private CubeGenerator _generator;
     private Color _initialColor;
-    private Coroutine _coroutine;
-    private ObjectPool<Cube> _pool;
 
     private bool _hasTouched = false;
 
@@ -42,7 +39,7 @@ public class Cube : MonoBehaviour
     private void StartLifeCycle()
     {
         float randomLifeTime = RandomGenerator.Range(_minLifeTime, _maxLifeTime);
-        _coroutine = StartCoroutine(DestroyAfterDelay(randomLifeTime));
+        StartCoroutine(DestroyAfterDelay(randomLifeTime));
     }
 
     private void ResetCube()
@@ -58,5 +55,5 @@ public class Cube : MonoBehaviour
         _generator.ReturnObject(this);
     }
 
-    private void GetRandomColor() => _meshRenderer.material.color = UnityEngine.Random.ColorHSV();
+    private void GetRandomColor() => _meshRenderer.material.color = Random.ColorHSV();
 }
