@@ -21,7 +21,7 @@ public class Bomb : MonoBehaviour
         _originalColor = _material.color;
     }
 
-    private void Start() =>
+    private void OnEnable() =>
         StartCoroutine(FadeOut());
 
     public void Init(BombGenerator bombGenerator) =>
@@ -44,7 +44,7 @@ public class Bomb : MonoBehaviour
 
     private IEnumerator FadeOut()
     {
-        float elapsedTime = 2f;
+        float elapsedTime = 0f;
 
         while (elapsedTime < _fadeTime)
         {

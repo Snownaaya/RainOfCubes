@@ -22,7 +22,7 @@ public class Cube : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out Platform _) && _hasTouched == false)
+        if (_hasTouched == false && (collision.gameObject.TryGetComponent(out Platform _)))
         {
             _hasTouched = true;
             GetRandomColor();

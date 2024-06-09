@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class BombGenerator : ObjectSpawner<Bomb>
 {
     protected override void InitializeObject(Bomb @object)
